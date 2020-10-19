@@ -138,11 +138,22 @@ export class CharacterAbilities {
     }
 
     get strength() { return this.#strength; }
+    get strengthModificator() { return Math.floor((this.#strength - 10) / 2); }
+
     get dexterity() { return this.#dexterity; }
+    get dexterityModificator() { return Math.floor((this.#dexterity - 10) / 2); }
+
     get constitution() { return this.#constitution; }
+    get constitutionModificator() { return Math.floor((this.#constitution - 10) / 2); }
+
     get intelligence() { return this.#intelligence; }
+    get intelligenceModificator() { return Math.floor((this.#intelligence - 10) / 2); }
+
     get wisdom() { return this.#wisdom; }
-    get charisma() { return this.#charisma }
+    get wisdomModificator() { return Math.floor((this.#wisdom - 10) / 2); }
+
+    get charisma() { return this.#charisma; }
+    get charismaModificator() { return Math.floor((this.#charisma - 10) / 2); }
 }
 
 

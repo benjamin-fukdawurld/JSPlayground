@@ -21,17 +21,21 @@ export default class Dice {
         return result + bonus;
     }
 
-    static diceRollFromPattern(pattern, multiplicator = value => multiplicator) {
-        if (pattern !== "string")
-            throw new TypeError("'pattern' must be a function");
+    static diceRollFromPattern(pattern, multiplicator = value => value) {
+        if (typeof (pattern) !== "string")
+            throw new TypeError("'pattern' must be a string");
         pattern = pattern.toUpperCase();
         let sizePos = pattern.indexOf("D");
         let bonusPos = pattern.indexOf("+");
+        let bonus = 0;
         if (bonusPos === -1)
             bonusPos = pattern.indexOf("-");
+        if (bonusPos !== -1) {
+            bonus = parseInt(pattern.substring(bonusPos, pattern.length), 10)
+        }
+
         let number = parseInt(pattern.substring(0, sizePos), 10)
         let diceSize = parseInt(pattern.substring(sizePos + 1, bonusPos), 10)
-        let bonus = parseInt(pattern.substring(sizePos + 1, bonusPos), 10)
 
         return Dice.diceRoll(Array(number).fill(diceSize), bonus, multiplicator)
     }
