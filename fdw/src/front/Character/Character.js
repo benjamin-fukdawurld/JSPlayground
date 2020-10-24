@@ -7,12 +7,21 @@ import avatar from './avatar.jpg';
 import './Character.css'
 
 export default class Character extends Component {
-    constructor({ character, desc }) {
-        super();
-        this.avatar = avatar
-        this.character = character;
-        this.desc = desc;
+    constructor(props) {
+        super(props);
+        this.avatarImage = avatar
+        this.character = props.character;
+        this.desc = props.desc;
     }
+
+    avatar = () => (<div className="character-avatar">
+        <img className="character-avatar" src={this.avatarImage} alt="charater avatar" />
+    </div>)
+
+    presentation = () => (<div className="character-presentation">
+        <div className="character-name">{this.character.name}</div>
+        <HealthBar hp={this.character.healthPoints} maxHp={this.character.maxHealthPoints} />
+    </div>)
 
     shortDesc = () => (<div className="character-short-desc">
         <div className="character-races">{this.character.raceNames}</div>
@@ -20,31 +29,29 @@ export default class Character extends Component {
         <div className="character-classes">{this.character.classeNames}</div>
     </div>);
 
-    longDesc = () => <div className="character-long-desc">
+    longDesc = () => (<div className="character-long-desc">
         <CharacterAbilities abilities={this.character.abilities} />
-    </div>
+    </div>)
 
     render() {
         return <div className="character">
-            <div className="character-presentation">
-                <div className="character-avatar">
-                    <img className="character-avatar" src={this.avatar} alt="charater avatar" />
-                </div>
-                <div className="character-name">{this.character.name}</div>
-                <HealthBar hp={this.character.healthPoints} maxHp={this.character.maxHealthPoints} />
-            </div>
-            {this.desc !== "presentation" && this.shortDesc()}
-            {this.desc === "long" && this.longDesc()}
+            {this.avatar()}
+            {this.desc !== "avatar" && this.presentation()}
+            {this.desc !== "avatar" && this.desc !== "presentation" && this.shortDesc()}
+            {this.desc !== "avatar"
+                && this.desc !== "presentation"
+                && this.desc === "long" && this.longDesc()}
         </div>;
     }
 }
 
 Character.defaultProps = {
-    desc: "presentation"
+    desc: "avatar"
 }
 
 Character.propTypes = {
     short: PropTypes.oneOf([
+        "avatar",
         "presentation",
         "short",
         "long"

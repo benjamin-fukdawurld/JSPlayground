@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import DiceModel from "../../back/Dice"
+import DiceModel from "../../back/Common/Dice"
 //import './Dice.css'
 
 export default class Dice extends Component {
-    state = {
-        diceResult: null
-    }
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.numberOfDices = 1;
         this.bonus = 0;
         this.diceSize = 0;
+        this.state = {
+            diceResult: null
+        }
 
         this.onNumberChanges = this.onNumberChanges.bind(this);
         this.onSizeChanges = this.onSizeChanges.bind(this);
@@ -36,7 +36,7 @@ export default class Dice extends Component {
     }
 
     NumberOfDiceSpinBox() {
-        return <input type="number" min="1" defaultValue={this.numberOfDices}
+        return <input type="number" name="number-of-dice" min="1" defaultValue={this.numberOfDices}
             onInput={this.onNumberChanges} />;
     }
 
@@ -45,7 +45,7 @@ export default class Dice extends Component {
     }
 
     TypeOfDiceSpinBox() {
-        return <input type="number" min="4"
+        return <input type="number" min="4" name="type-of-dice"
             list="standard-dices" onInput={this.onSizeChanges} />;
     }
 
@@ -54,31 +54,35 @@ export default class Dice extends Component {
     }
 
     BonusSpinBox() {
-        return <input type="number" defaultValue={this.bonus}
+        return <input type="number" defaultValue={this.bonus} name="dice-bonus"
             onInput={this.onBonusChanges} />;
     }
 
     RollDiceButton() {
-        return <input type="button" value="roll dice"
+        return <input type="button" value="roll dice" name="roll-dice-button"
             onClick={this.onRollDice} />;
     }
 
-    onNumberChanges(event) { this.numberOfDices = event.target.value; }
+    onNumberChanges(event) {
+        this.numberOfDices = event.target.value; this.setState({
+            diceResult: null
+        })
+    }
     onSizeChanges(event) { this.diceSize = event.target.value; }
     onBonusChanges(event) { this.bonus = event.target.value; }
     onRollDice() {
         if (this.diceSize === undefined)
             return;
 
-        let result = DiceModel.diceRollFromPattern(
-            this.numberOfDices.toString()
-            + "D"
-            + this.diceSize.toString()
-            + "+"
-            + this.bonus.toString()
-        )
-        console.log(result);
-        this.setState({ diceResult: result });
+        this.setState((state, prop) => ({
+            diceResult: DiceModel.diceRollFromPattern(
+                this.numberOfDices.toString()
+                + "D"
+                + this.diceSize.toString()
+                + "+"
+                + this.bonus.toString()
+            )
+        }));
     }
 
     render() {

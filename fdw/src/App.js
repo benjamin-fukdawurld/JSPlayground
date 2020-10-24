@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import './App.css'
 
-import { Character } from './back/Character';
+import { Character } from './back/Character/Character';
 import CharacterComponents from './front/Character/Character';
 import Dice from './front/Common/Dice';
-
-import Card from "./Card";
-import GuessCount from './GuessCount';
 
 class App extends Component {
   render() {
