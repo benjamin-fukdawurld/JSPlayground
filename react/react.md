@@ -8,5 +8,5 @@ I am 100% sure you've guessed, **conding projects** !
 
 ## Our first project
 
-Our first project will simply be the project described on [react's tutorial page](reactjs.org/tutorial/tutorial.html)
+Our first project will simply be the project described on [react's tutorial page](https://reactjs.org/tutorial/tutorial.html)
 
