@@ -16,7 +16,7 @@ Now that I have discovered the MERN stack the dirty way I will dive deeper in th
 
 ## Summary
 - Step 1:
-    - Basics of [react](./react/react.md) & node.
+    - Basics of [react](./react/react.md) & [node](./node/node.md).
 
 - Step 2:
     - Rest API
