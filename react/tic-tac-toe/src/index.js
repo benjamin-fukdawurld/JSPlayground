@@ -2,56 +2,52 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-    render() {
-        return (
-            <button
-                className="square"
-                onClick={() => {
-                    if (!this.props.value)
-                        this.props.onClick();
-                }}
-            >
-                {this.props.value}
-            </button>
-        );
-    }
+function Square(props) {
+    return (
+        <button
+            className="square"
+            onClick={props.onClick}
+        >
+            {props.value}
+        </button>
+    );
 }
 
-class Board extends React.Component {
-    renderSquare(i) {
-        return <Square onClick={() => {
-            if (this.props.isDone)
-                return;
+function Board(props) {
+    const renderSquare = (i) => {
+        return <Square
+            key={i}
+            onClick={() => {
+                if (props.isDone || props.board[i])
+                    return;
 
-            let board = [...this.props.board];
-            board[i] = this.props.current;
-            this.props.onChange(board);
-        }}
-            value={this.props.board[i]} />;
+                let board = props.board.slice();
+                board[i] = props.current;
+                props.onChange(board);
+            }}
+            value={props.board[i]}
+        />;
     }
 
-    render() {
-        return (
-            <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+    return (
+        <div>
+            <div className="board-row">
+                {renderSquare(0)}
+                {renderSquare(1)}
+                {renderSquare(2)}
             </div>
-        );
-    }
+            <div className="board-row">
+                {renderSquare(3)}
+                {renderSquare(4)}
+                {renderSquare(5)}
+            </div>
+            <div className="board-row">
+                {renderSquare(6)}
+                {renderSquare(7)}
+                {renderSquare(8)}
+            </div>
+        </div>
+    );
 }
 
 class Game extends React.Component {
@@ -107,7 +103,7 @@ class Game extends React.Component {
                                 current = (this.state.current === 'X' ? 'O' : 'X');
                             const history = [
                                 ...this.state.history,
-                                JSON.stringify({ board, current })
+                                JSON.stringify({ board, current, done })
                             ];
                             this.setState({ board, history, current, done });
                         }}
@@ -117,16 +113,18 @@ class Game extends React.Component {
                     <div>{status}</div>
                     <ol>{
                         this.state.history.map((state, index) => {
-                            return <li
-                                key={state}
-                                onClick={() => {
-                                    this.setState({
-                                        ...JSON.parse(state),
-                                        history: this.state.history.slice(0, index + 1)
-                                    })
-                                }}
-                            >
-                                {`return to state #${index}`}
+                            return <li>
+                                <button
+                                    key={state}
+                                    onClick={() => {
+                                        this.setState({
+                                            ...JSON.parse(state),
+                                            history: this.state.history.slice(0, index + 1)
+                                        })
+                                    }}
+                                >
+                                    {`return to state #${index}`}
+                                </button>
                             </li>
                         })
                     }</ol>
