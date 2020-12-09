@@ -4,7 +4,7 @@
 
 This project has been created using `react-create-app`.  
 
-For npm command check the [README](./README.md).
+For npm commands check the [README](./README.md).
 
 ## First attempt
 
