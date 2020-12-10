@@ -27,3 +27,10 @@ To start with the simplest project of the list we will implement the calculator.
 The goal is to create a calculator inspired of ubuntus calculator.
 
 Check the dedicated [page](./calculator/calculator.md)
+
+## GitHub issue page clone
+
+Now, let's play tith GitHub API and create a clone for GitHub issues.  
+The goal is just to make a frontend similar to GitHub's page, the scope is just to display the data in the same way git does, the interaction is not meant to be equivalent.
+
+Check the dedicated [page](./git-issues/git-issues.md)
