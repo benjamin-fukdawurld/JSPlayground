@@ -17,3 +17,5 @@ At first we will implement only the basic layout of the calculator.
 Ok at this point ([commit: 7bcca44](https://github.com/benjamin-fukdawurld/JSPlayground/commit/7bcca44194188bbf16cbbfe3863da64c860a1579)) the project is not perfect but the calculator works quite well, the look and feel is quite similar, there is a little more styling to do especialy on the history and the mode selector but I think there is no need to spend more time on this project as we have learn all we needed to do it.
 
 So, let's say "Job's done!"
+
+> I am quite happy I have done a bit of styled components and that was quite easy to do what I needed
