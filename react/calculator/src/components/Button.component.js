@@ -17,6 +17,7 @@ const ButtonTag = styled.button`
     border-width: 1px;
     background-color: ${props => props.color || "#505050"};
     font-style: ${props => props.fontStyle || "normal"};
+    font-family: 'Ubuntu';
     color: white;
     &:focus {
         outline-style: none;

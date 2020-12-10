@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const HistoryTableRow = styled.tr`
     width: 90%;
     color: white;
+    font-family: 'Ubuntu';
 `;
 
 const HistoryOperation = styled.td`

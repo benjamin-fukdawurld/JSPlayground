@@ -7,6 +7,7 @@ const Input = styled.input`
     margin: 3px;
     top: 0;
     font-size: 1.3em;
+    font-family: 'Ubuntu';
     box-sizing: border-box;
     border-style: none;
     &:focus {
