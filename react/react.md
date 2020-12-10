@@ -12,3 +12,18 @@ Our first project will simply be the project described on [react's tutorial page
 It is a tic-tac-toe game. As simple as it is it will be very interesting to start with it to play with react.
 
 Let's see how we do it in the dedicated [file](./tic-tac-toe/tic-tac-toe.md)
+
+## Lets go for other projects
+
+Now that's we have done a bit of react let's go deeper.
+
+To begin continue our journey we will implement the projects suggested in this [list](https://www.upgrad.com/blog/react-project-ideas-topics-beginners)
+
+To start a bit softly we will begin with the calculator project.
+
+## The Calculator
+
+To start with the simplest project of the list we will implement the calculator.
+The goal is to create a calculator inspired of ubuntus calculator.
+
+Check the dedicated [page](./calculator/calculator.md)
