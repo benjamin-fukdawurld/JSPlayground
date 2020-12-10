@@ -12,9 +12,13 @@ code {
     monospace;
 }
 
-.equalButton {
-  background-color: #0C6D1A;
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
+
+/* Scrollbar */
 
 /* width */
 ::-webkit-scrollbar {
@@ -36,3 +40,5 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: #888; 
 }
+
+/* ----------------------------- */

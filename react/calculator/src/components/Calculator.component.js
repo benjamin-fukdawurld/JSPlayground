@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react';
 
-import BasicLayout from './BasicLayout.component';
+import Header from './Header.component';
+import Layout from './Layout.component';
 import History from './History.component';
 import OperationField from './OperationField.component';
 
@@ -20,13 +21,6 @@ const MainContainer = styled.div`
     background-color: #3E3E3E;
 `;
 
-const Header = styled.div`
-    height: 46px;
-    background-color: #303030;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-`;
-
 const CalculatorInputContainer = styled.div`
     background-color: #3E3E3E;
 `;
@@ -36,7 +30,8 @@ export default class Calculator extends Component {
         super(props)
         this.operationRef = createRef(null)
         this.state = {
-            history: []
+            history: [],
+            currentLayout: props.layouts.Basic
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -90,7 +85,12 @@ export default class Calculator extends Component {
 
     render() {
         return <MainContainer className="calculator">
-            <Header className="header"></Header>
+            <Header
+                layouts={this.props.layouts}
+                onChange={(value) => (
+                    this.setState({ currentLayout: value })
+                )}
+            />
             <History
                 history={this.state.history}
                 onClick={(operation) => this.operationRef.current.value = operation}
@@ -105,7 +105,8 @@ export default class Calculator extends Component {
                         this.handleEqual();
                     }}
                 />
-                <BasicLayout
+                <Layout
+                    layout={this.state.currentLayout}
                     onClick={this.handleClick}
                 />
             </CalculatorInputContainer>
