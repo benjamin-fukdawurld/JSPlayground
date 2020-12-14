@@ -6,7 +6,6 @@ const RepoBreadcrumbContainer = styled.div`
     align-items: center;
     height: 32px;
     margin-right: 16px;
-    max-width: 100%;
 `;
 
 const RepoBreadcrumbH1 = styled.h1`

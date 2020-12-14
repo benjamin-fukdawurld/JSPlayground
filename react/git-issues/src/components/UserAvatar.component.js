@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import DropdownCaret from './DropdownCaret.component';
+
 const Div = styled.div`
     display: inline-block;
 `;
@@ -13,7 +15,11 @@ const Image = styled.img`
     border-radius: 50%;
 `;
 
-export default function UserAvatar(props) {
+const caretElm = styled(DropdownCaret)`
+    margin-bottom: 4px;
+`;
+
+function UserAvatar(props) {
     return <Div>
         <Image
             alt="@benjamin-fukdawurld"
@@ -21,3 +27,7 @@ export default function UserAvatar(props) {
         />
     </Div>;
 }
+
+UserAvatar.CaretElement = caretElm;
+
+export default UserAvatar;

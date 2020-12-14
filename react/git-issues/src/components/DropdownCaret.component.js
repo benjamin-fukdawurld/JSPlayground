@@ -12,8 +12,8 @@ const DropdownCaretSpan = styled.span`
     border-right: 4px solid transparent;
     border-bottom: 0 solid transparent;
     border-left: 4px solid transparent;
-    margin: 0 0 6px 4px;
+    margin: 2px 0 0 4px;
 `;
-const DropdownCaret = () => <DropdownCaretSpan />
+const DropdownCaret = (props) => <DropdownCaretSpan className={props.className} />
 
 export default DropdownCaret;

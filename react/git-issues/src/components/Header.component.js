@@ -117,7 +117,7 @@ export default function Header(props) {
                     </DropdownMenu>
                 </RightNavItem>
                 <RightNavItem className="navItem">
-                    <DropdownMenu>
+                    <DropdownMenu caretElement={React.createElement(UserAvatar.CaretElement)}>
                         <UserAvatar />
                     </DropdownMenu>
                 </RightNavItem>
