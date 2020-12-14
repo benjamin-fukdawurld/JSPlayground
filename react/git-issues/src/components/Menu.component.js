@@ -7,7 +7,6 @@ import MenuActions from './MenuActions.component';
 const MenuContainer = styled.div`
     position: relative;
     padding-top: 16px;
-    margin-bottom: 32px;
     width: 100%
 `;
 
