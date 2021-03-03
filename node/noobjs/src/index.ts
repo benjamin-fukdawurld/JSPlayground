@@ -1,7 +1,9 @@
+/// <reference path="decs.d.ts"/>
 import * as dotenv from 'dotenv';
 import https from 'https';
 import http from 'http';
 import {Request, Response} from 'express';
+import googleTrends from 'google-trends-api';
 
 import Application from './Application';
 
@@ -15,7 +17,17 @@ app.addRoutes([
     {
         method: "get",
         path: "/",
-        args: [ (req: Request, res: Response) => { res.send("hello world"); } ]
+        args: [ (req: Request, res: Response) => {
+            googleTrends.interestOverTime({keyword: 'python'})
+            .then(function(results: any){
+                results = JSON.parse(results);
+                results = results.default.timelineData.map((data: any) => data.value[0]);
+                res.json(results);
+            })
+            .catch(function(err: any){
+                res.send(err);
+            });
+        } ]
     }
 ]);
 
