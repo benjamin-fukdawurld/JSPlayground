@@ -2,7 +2,7 @@ import React from "react";
 
 import { IconDefaultProps, IconProps } from "./interfaces";
 
-function MessageIcon({ className, solid, color, fill, stroke }: IconProps) {
+function ShareIcon({ className, solid, color, fill, stroke }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +33,6 @@ function MessageIcon({ className, solid, color, fill, stroke }: IconProps) {
   );
 }
 
-MessageIcon.defaultProps = IconDefaultProps;
+ShareIcon.defaultProps = IconDefaultProps;
 
-export default MessageIcon;
+export default ShareIcon;

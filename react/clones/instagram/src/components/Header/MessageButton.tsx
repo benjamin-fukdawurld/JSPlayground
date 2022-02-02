@@ -1,12 +1,12 @@
 import React from "react";
-import { MessageIcon } from "../../icons";
+import { ShareIcon } from "../../icons";
 
 type Props = {};
 
 export default function MessageButton({}: Props) {
   return (
     <button>
-      <MessageIcon />
+      <ShareIcon />
     </button>
   );
 }
